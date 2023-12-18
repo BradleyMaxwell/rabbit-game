@@ -175,10 +175,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77f617e9d1ae74fb0b9510c765309056, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ability: {fileID: 11400000, guid: 5f8a9815b3a3d47fe8efa10f3d37baf1, type: 2}
+  abilityInfo: {fileID: 11400000, guid: 5f8a9815b3a3d47fe8efa10f3d37baf1, type: 2}
   cooldownRemaining: 0
   gunTip: {fileID: 2683161026215220071}
-  bulletPrefab: {fileID: 3066794009845889077, guid: bfa3f3cb612cf489784b849b8724cccc, type: 3}
+  bulletPrefab: {fileID: 1706764370005184714, guid: bfa3f3cb612cf489784b849b8724cccc, type: 3}
 --- !u!1 &9157799736810071179
 GameObject:
   m_ObjectHideFlags: 0
@@ -281,7 +281,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}

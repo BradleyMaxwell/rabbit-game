@@ -1,10 +1,10 @@
 using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(TargetedAbilityManager), typeof(EnemyMovement))]
+[RequireComponent(typeof(TargetedAbility), typeof(EnemyMovement))]
 public class EnemyTargetedController : MonoBehaviour // this script defines how enemies with targeted abilities will act by default
 {
-    private TargetedAbilityManager targetedAbilityManager; // the component which handles the enemy's targeted ability
+    private TargetedAbility targetedAbility; // the component which handles the enemy's targeted ability
     private EnemyMovement enemyMovement; // the component that controls the movement of the enemy
     [SerializeField] private GameObject target; // what the enemy is chasing and using their ability on
     private enum EnemyState
@@ -16,7 +16,7 @@ public class EnemyTargetedController : MonoBehaviour // this script defines how 
 
     private void Awake()
     {
-        targetedAbilityManager = GetComponent<TargetedAbilityManager>();
+        targetedAbility = GetComponent<TargetedAbility>();
         enemyMovement = GetComponent<EnemyMovement>();
     }
 
@@ -31,10 +31,10 @@ public class EnemyTargetedController : MonoBehaviour // this script defines how 
         switch (enemyState)
         {
             case EnemyState.CHASING:
-                if (targetedAbilityManager.IsInRange(target.transform))
+                if (targetedAbility.IsInRange(target.transform))
                 {
                     enemyMovement.StopChasing(); // if the enemy is in range for their ability, it makes no sense to keep chasing
-                    if (targetedAbilityManager.IsOffCooldown())
+                    if (targetedAbility.IsOffCooldown())
                     {
                         enemyState = EnemyState.CASTING_ABILITY;
                     }
@@ -53,6 +53,6 @@ public class EnemyTargetedController : MonoBehaviour // this script defines how 
 
     private IEnumerator CastAbilityAndWait() // need this in order to wait for Use effect coroutine to finish
     {
-        yield return StartCoroutine(targetedAbilityManager.Use(target));
+        yield return StartCoroutine(targetedAbility.Use(target));
     }
 }

@@ -1,31 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
-public abstract class Ability : ScriptableObject // the base script that all types of abilities derive from which defines common information
+public class Ability : MonoBehaviour // behaviour script for enemies to use their ability and track cooldown
 {
-    [SerializeField] protected new string name;
-    [SerializeField] protected float cooldown; // how long until the ability is ready to be used again after use
-    [SerializeField] protected float castTime; // how long it takes the ability to be executed in seconds
-    [SerializeField] protected string description; // an explanation of how the ability works
+    [SerializeField] protected AbilityInfo abilityInfo; // stores information about this enemy's ability
+    [SerializeField] private float cooldownRemaining; // how much time remains until the ability can be used again
 
-    public string Name
+    // Update is called once per frame
+    protected virtual void Update()
     {
-        get { return name; }
-    }
-    
-    public float Cooldown
-    {
-        get { return cooldown; }
+        if (cooldownRemaining > 0) // if there is any remaining cooldown on the ability then reduce the remaining cooldown each frame
+        {
+            cooldownRemaining -= Time.deltaTime;
+        }
     }
 
-    public float CastTime
+    public bool IsOffCooldown()
     {
-        get { return castTime; }
+        if (cooldownRemaining <= 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
-    public string Description
+    protected void StartCooldown()
     {
-        get { return description; }
+        cooldownRemaining = abilityInfo.Cooldown; // set the cooldown remaining to the cooldown of the ability
     }
 }
