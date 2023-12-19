@@ -35,7 +35,6 @@ public abstract class TargetedAbility : Ability // handles logic and information
             Vector3 targetPosition = new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z); // make sure the rotation is only around the y axis
             transform.LookAt(targetPosition);
             castTimeRemaining -= Time.deltaTime;
-            Debug.Log("cast time remaining: " + castTimeRemaining.ToString());
             yield return null;
         }
     }

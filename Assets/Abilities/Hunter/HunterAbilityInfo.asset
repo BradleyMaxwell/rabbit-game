@@ -17,5 +17,5 @@ MonoBehaviour:
   castTime: 3
   description: Hunters shoot damaging bullets after briefly aiming.
   range: 10
-  bulletTravelSpeed: 30
+  bulletTravelSpeed: 40
   damage: 1

@@ -34,7 +34,7 @@ public class EnemyTargetedController : MonoBehaviour // this script defines how 
                 if (targetedAbility.IsInRange(target.transform))
                 {
                     enemyMovement.StopChasing(); // if the enemy is in range for their ability, it makes no sense to keep chasing
-                    if (targetedAbility.IsOffCooldown())
+                    if (targetedAbility.CanUse())
                     {
                         enemyState = EnemyState.CASTING_ABILITY;
                     }
@@ -49,6 +49,7 @@ public class EnemyTargetedController : MonoBehaviour // this script defines how 
                 enemyState = EnemyState.CHASING;
                 break;
         }
+        Debug.Log(enemyState);
     }
 
     private IEnumerator CastAbilityAndWait() // need this in order to wait for Use effect coroutine to finish
