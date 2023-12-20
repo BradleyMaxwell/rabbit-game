@@ -1,25 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(BoxCollider))]
+[RequireComponent(typeof(BoxCollider))] // bullet needs this so it can collide with other game objects
 public class HunterBullet : MonoBehaviour // attached to the hunter bullet prefab to handle its logic when fired
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    private int damage; // set by the hunter ability before it is fired
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.gameObject.name);
         Destroy(gameObject);
+        Health collisionHealth = collision.gameObject.GetComponent<Health>(); // check if the object that the bullet collides with has a health component
+        if (collisionHealth != null)
+        {
+            collisionHealth.TakeDamage(damage);
+        }
+    }
+
+    public int Damage
+    {
+        set { damage = value; }
     }
 }

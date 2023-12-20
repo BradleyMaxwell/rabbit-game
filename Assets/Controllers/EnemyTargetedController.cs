@@ -49,7 +49,6 @@ public class EnemyTargetedController : MonoBehaviour // this script defines how 
                 enemyState = EnemyState.CHASING;
                 break;
         }
-        Debug.Log(enemyState);
     }
 
     private IEnumerator CastAbilityAndWait() // need this in order to wait for Use effect coroutine to finish

@@ -34,8 +34,11 @@ public class HunterAbility : TargetedAbility
         // hunter needs to aim at their target throughout the cast before firing
         yield return StartCoroutine(AimDuringCast(target)); // hunter will wait until the cast has finished
 
-        // fire the bullet prefab in the direction the hunter's gun is facing
+        // spawn the bullet then set the damage of the projectile
         GameObject bullet = Instantiate(bulletPrefab, gunTip.position, gunTip.rotation); // creates a bullet instance at the tip of the gun facing the same direction as the gun
+        bullet.GetComponent<HunterBullet>().Damage = hunterAbilityInfo.Damage;
+    
+        // fire the bullet prefab in the direction the hunter's gun is facing
         Rigidbody bulletRB = bullet.GetComponent<Rigidbody>();
         bulletRB.AddForce(bulletRB.transform.forward * hunterAbilityInfo.BulletTravelSpeed, ForceMode.VelocityChange); // velocity change keeps the bullet travel speed constant
 
