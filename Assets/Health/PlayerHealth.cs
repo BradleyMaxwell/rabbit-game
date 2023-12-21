@@ -32,8 +32,14 @@ public class PlayerHealth : Health // contains the logic that occurs specificall
 
     public override void TakeDamage(int damage)
     {
-        playerHealthInfo.CurrentHealth = Mathf.Max(0, playerHealthInfo.CurrentHealth - damage);
-        onPlayerHealthChanged.Raise();
+        int newHealth = Mathf.Max(0, playerHealthInfo.CurrentHealth - damage);
+        if (newHealth != playerHealthInfo.CurrentHealth)
+        {
+            playerHealthInfo.CurrentHealth = newHealth;
+            onPlayerHealthChanged.Raise();
+            Debug.Log("player health change event raised");
+        }
+
         if (playerHealthInfo.CurrentHealth == 0)
         {
             Die();
@@ -42,12 +48,16 @@ public class PlayerHealth : Health // contains the logic that occurs specificall
 
     public override void RestoreHealth(int amount)
     {
-        playerHealthInfo.CurrentHealth = Mathf.Min(playerHealthInfo.MaxHealth, playerHealthInfo.CurrentHealth + amount);
-        onPlayerHealthChanged.Raise();
+        int newHealth = Mathf.Min(playerHealthInfo.MaxHealth, playerHealthInfo.CurrentHealth + amount);
+        if (newHealth != playerHealthInfo.CurrentHealth)
+        {
+            playerHealthInfo.CurrentHealth = newHealth;
+            onPlayerHealthChanged.Raise(); // the player health changed event should only be raised if the player's health actually changes
+        }
     }
 
     protected override void ResetCurrentHealth()
     {
-        playerHealthInfo.CurrentHealth = playerHealthInfo.MaxHealth;
+        RestoreHealth(playerHealthInfo.MaxHealth); // will heal the player all the way up to 100% health
     }
 }
