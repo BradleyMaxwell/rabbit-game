@@ -45,6 +45,9 @@ GameObject:
   - component: {fileID: 2736351884226603327}
   - component: {fileID: 6611560524734390314}
   - component: {fileID: 7607402690640979372}
+  - component: {fileID: 543428344477536836}
+  - component: {fileID: 1115973073437374311}
+  - component: {fileID: 3446158394581103873}
   m_Layer: 0
   m_Name: Hunter
   m_TagString: Untagged
@@ -154,7 +157,7 @@ NavMeshAgent:
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 360
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -176,9 +179,48 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityInfo: {fileID: 11400000, guid: 5f8a9815b3a3d47fe8efa10f3d37baf1, type: 2}
-  cooldownRemaining: 0
   gunTip: {fileID: 2683161026215220071}
   bulletPrefab: {fileID: 1706764370005184714, guid: bfa3f3cb612cf489784b849b8724cccc, type: 3}
+--- !u!114 &543428344477536836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3767528188666677761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de6ab6b4bf6d448e68a5dcd59c61abd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementInfo: {fileID: 11400000, guid: 53811d1a1543fa04cabc21e5130b6795, type: 2}
+--- !u!114 &1115973073437374311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3767528188666677761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84add6cc219cc47df837acf3e06fe2c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+--- !u!114 &3446158394581103873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3767528188666677761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22fd909919714b74e9333746e760d338, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthInfo: {fileID: 11400000, guid: f71d65cc2154d9440a75501cf15cd5c6, type: 2}
+  currentHealth: 0
 --- !u!1 &9157799736810071179
 GameObject:
   m_ObjectHideFlags: 0

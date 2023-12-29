@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New HealthInfo", menuName = "Info/Health")]
+[CreateAssetMenu(fileName = "New HealthInfo", menuName = "Info/Health/General")]
 public class HealthInfo : ScriptableObject
 {
     [SerializeField] private int maxHealth;
