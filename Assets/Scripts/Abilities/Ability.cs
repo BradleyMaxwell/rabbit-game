@@ -6,7 +6,7 @@ using UnityEngine;
 public class Ability : MonoBehaviour // behaviour script for enemies to use their ability and track cooldown
 {
     [SerializeField] protected AbilityInfo abilityInfo; // stores information about this enemy's ability
-    [SerializeField] private float cooldownRemaining; // how much time remains until the ability can be used again
+    private float cooldownRemaining; // how much time remains until the ability can be used again
     protected bool inUse; // indicates if the ability is in use at any moment to lock it from being recast 
 
     // Update is called once per frame

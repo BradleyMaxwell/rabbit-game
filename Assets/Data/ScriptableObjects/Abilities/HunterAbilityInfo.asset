@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: HunterAbilityInfo
   m_EditorClassIdentifier: 
   name: Ol' Buckshot
-  cooldown: 4
+  cooldown: 3
   castTime: 2
   description: Hunters shoot damaging bullets after briefly aiming.
-  range: 10
-  bulletTravelSpeed: 40
+  range: 15
+  bulletTravelSpeed: 35
   damage: 1
